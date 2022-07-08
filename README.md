@@ -1,5 +1,5 @@
 # Observe
-
+## Origin form https://github.com/SilenceTiger/async-bus
 ## 使用示例
 ```typescript 
 import Observe from 'xx/Observe.ts'
