@@ -1,18 +1,20 @@
 # Observe or emitter  
 
 ## Example
+
 ```typescript
 
 
-import Observe from 'WeakMapEmitter.ts'
+import EventEmitter from 'WeakMapEmitter.ts'
+
+const Observe = new EventEmitter<{functionName: DataType}>();
+
+Observe.on('eventName',callback)
 
 
-Observe.on('functionName',callback)
+Observe.emit('eventName',data)
 
 
-Observe.emit('functionName',data)
-
-
-Observe.off('functionName')
+Observe.off('eventName')
 
 ```
