@@ -1,10 +1,14 @@
-type EventMap = Record<string, any>;
+type EventMap = Record<string, unknown>;
 
 type EventKey<T extends EventMap> = string & keyof T;
-type EventReceiver<T> = (params: T) => void;
+
+type EventReceiver<T> = (params?: T) => void;
 
 class EventEmitter<T extends EventMap> {
-  private listeners: WeakMap<object, Map<EventKey<T>, EventReceiver<T[keyof T]>>>;
+  private listeners: WeakMap<
+    object,
+    Map<EventKey<T>, EventReceiver<T[keyof T]>[]>
+  >;
 
   constructor() {
     this.listeners = new WeakMap();
@@ -12,27 +16,53 @@ class EventEmitter<T extends EventMap> {
 
   on<K extends EventKey<T>>(eventName: K, fn: EventReceiver<T[K]>): void {
     const eventListeners = this.listeners.get(this) || new Map();
-    eventListeners.set(eventName, fn);
+    const listeners = eventListeners.get(eventName) || [];
+    listeners.push(fn);
+    eventListeners.set(eventName, listeners);
     this.listeners.set(this, eventListeners);
   }
 
   off<K extends EventKey<T>>(eventName: K, fn: EventReceiver<T[K]>): void {
     const eventListeners = this.listeners.get(this);
     if (eventListeners) {
-      eventListeners.delete(eventName);
+      const listeners = eventListeners.get(eventName);
+      if (listeners) {
+        const index = listeners.indexOf(fn as EventReceiver<T[keyof T]>);
+        if (index !== -1) {
+          listeners.splice(index, 1);
+        }
+        if (listeners.length === 0) {
+          eventListeners.delete(eventName);
+        }
+      }
       if (eventListeners.size === 0) {
         this.listeners.delete(this);
       }
     }
   }
 
-  emit<K extends EventKey<T>>(eventName: K, params: T[K]): void {
+  emit<K extends EventKey<T>>(eventName: K, params?: T[K]): void {
     const eventListeners = this.listeners.get(this);
     if (eventListeners) {
-      const listener = eventListeners.get(eventName);
-      if (listener) {
-        listener(params);
+      const listeners = eventListeners.get(eventName);
+      if (listeners) {
+        for (const listener of listeners) {
+          listener(params);
+        }
       }
     }
   }
 }
+
+//使用示例
+const emitter = new EventEmitter<{test: string}>();
+
+emitter.on("test", (response) => {
+  console.log(response);
+});
+
+emitter.on("test", () => {
+  console.log("test2");
+});
+
+emitter.emit("test","st");
