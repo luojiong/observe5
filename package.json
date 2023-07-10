@@ -1,6 +1,6 @@
 {
   "name": "observe5",
-  "version": "1.2.4",
+  "version": "1.2.7",
   "description": "typescript emitter",
   "main": "./build/observe5.cjs.js",
   "module": "./build/observe5.esm.js",
@@ -29,7 +29,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luojiong/Observe.git"
+    "url": "git+https://github.com/luojiong/observe5"
   },
   "keywords": [
     "emitter",
@@ -39,9 +39,9 @@
   "author": "caine",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/luojiong/Observe/issues"
+    "url": "https://github.com/luojiong/observe5/issues"
   },
-  "homepage": "https://github.com/luojiong/Observe#readme",
+  "homepage": "https://github.com/luojiong/observe5#readme",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.22.7",
