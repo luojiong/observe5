@@ -1,6 +1,6 @@
 {
   "name": "observe5",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "typescript emitter",
   "main": "./build/observe5.cjs.js",
   "module": "./build/observe5.esm.js",

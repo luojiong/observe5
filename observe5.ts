@@ -1,13 +1,13 @@
-type EventMap = Record<string, unknown>;
+type EventMap = Record<string, any>;
 
-type EventKey<T extends EventMap> = string & keyof T;
+type EventKey<T extends EventMap> = string;
 
-type EventReceiver<T> = (params?: T) => void;
+type EventReceiver<T> = (params?: T extends undefined ? undefined : T) => void;
 
 class observe5<T extends EventMap> {
   private listeners: WeakMap<
     object,
-    Map<EventKey<T>, EventReceiver<T[keyof T]>[]>
+    Map<EventKey<T>, EventReceiver<T[EventKey<T>]>[]>
   >;
 
   constructor() {
@@ -27,7 +27,7 @@ class observe5<T extends EventMap> {
     if (eventListeners) {
       const listeners = eventListeners.get(eventName);
       if (listeners) {
-        const index = listeners.indexOf(fn as EventReceiver<T[keyof T]>);
+        const index = listeners.indexOf(fn as EventReceiver<T[EventKey<T>]>);
         if (index !== -1) {
           listeners.splice(index, 1);
         }
@@ -41,7 +41,7 @@ class observe5<T extends EventMap> {
     }
   }
 
-  emit<K extends EventKey<T>>(eventName: K, params?: T[K]): void {
+  emit<K extends EventKey<T>>(eventName: K, params?: T[K] extends undefined ? undefined : T[K]): void {
     const eventListeners = this.listeners.get(this);
     if (eventListeners) {
       const listeners = eventListeners.get(eventName);
@@ -53,4 +53,4 @@ class observe5<T extends EventMap> {
     }
   }
 }
-export default  observe5;
+export default observe5;
