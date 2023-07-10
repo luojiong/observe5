@@ -53,16 +53,4 @@ class EventEmitter<T extends EventMap> {
     }
   }
 }
-
-//使用示例
-const emitter = new EventEmitter<{test: string}>();
-
-emitter.on("test", (response) => {
-  console.log(response);
-});
-
-emitter.on("test", () => {
-  console.log("test2");
-});
-
-emitter.emit("test","st");
+export default  EventEmitter;
