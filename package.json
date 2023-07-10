@@ -1,12 +1,30 @@
 {
   "name": "observe5",
-  "version": "1.1.8",
+  "version": "1.2.2",
   "description": "typescript emitter",
-  "main": "./build/observe5.esm.js",
+  "main": "./build/observe5.cjs.js",
+  "module": "./build/observe5.esm.js",
   "types": "./build/observe5.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "exports": {
+    ".": {
+      "types": "./build/observe5.d.ts",
+      "browser": {
+        "require": "./build/observe5.cjs.js",
+        "import": "./build/observe5.esm.js",
+        "default":"./build/observe5.esm.js"
+      },
+      "default": {
+        "require": "./build/observe5.cjs.js",
+        "import": "./build/observe5.esm.js",
+        "default":"./build/observe5.cjs.js"
+      }
+    },
+    "./package.json": "./package.json",
+    "./*": "./*"
   },
   "type": "module",
   "repository": {
@@ -24,7 +42,7 @@
     "url": "https://github.com/luojiong/Observe/issues"
   },
   "homepage": "https://github.com/luojiong/Observe#readme",
-  "dependencies": {
+  "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.22.7",
     "@babel/preset-typescript": "^7.22.5",
