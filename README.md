@@ -1,13 +1,17 @@
 # Observe or emitter  
 
+## setup 
+` yarn add observe5 or pnpm add observe5 `
 ## Example
 
 ```typescript
 
 
-import EventEmitter from 'WeakMapEmitter.ts'
+import Observe5 from 'observe5'
 
-const Observe = new EventEmitter<{functionName: DataType}>();
+
+const Observe = new Observe5<{functionName: DataType}>();
+
 
 Observe.on('eventName',callback)
 

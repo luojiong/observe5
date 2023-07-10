@@ -9,17 +9,17 @@ import progress from "rollup-plugin-progress";
 
 const BabelExcludes = ["./node_modules/**"];
 export default {
-  input: "WeakMapEmitter.ts",
+  input: "./observe5.ts",
   output: [
     {
-      name: "WeakMapEmitter",
-      file:"./build/weakMapEmitter.esm.js",
+      name: "observe5",
+      file:"./build/observe5.esm.js",
       format: "esm",
       plugins:[terser()]
     },
     {
-      name: "WeakMapEmitter",
-      file:"./build/weakMapEmitter.cjs.js",
+      name: "observe5",
+      file:"./build/observe5.cjs.js",
       format: "cjs",
       plugins:[terser()]
     },

@@ -4,7 +4,7 @@ type EventKey<T extends EventMap> = string & keyof T;
 
 type EventReceiver<T> = (params?: T) => void;
 
-class EventEmitter<T extends EventMap> {
+class observe5<T extends EventMap> {
   private listeners: WeakMap<
     object,
     Map<EventKey<T>, EventReceiver<T[keyof T]>[]>
@@ -53,4 +53,4 @@ class EventEmitter<T extends EventMap> {
     }
   }
 }
-export default  EventEmitter;
+export default  observe5;
