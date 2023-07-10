@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "noImplicitAny": false,
+      "module": "esnext",
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "sourceMap": false,
+      "forceConsistentCasingInFileNames": true,
+      "outDir": "./build",
+      "declaration": true,
+      "declarationDir": "./build"
+    },
+    "baseUrl": ".",
+    "include": [
+      "./*.ts"
+    ],
+    "exclude": [
+      "src/**/*.spec.ts",
+      "node_modules"
+    ]
+  }

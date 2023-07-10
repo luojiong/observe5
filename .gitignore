@@ -3,7 +3,8 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
-
+node_modules
+.vsocde
 # Other files and folders
 .settings/
 
