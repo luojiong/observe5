@@ -13,13 +13,13 @@ export default {
   output: [
     {
       name: "observe5",
-      file:"./build/observe5.esm.js",
+      file:"./build/observe5.mjs",
       format: "esm",
       plugins:[terser()]
     },
     {
       name: "observe5",
-      file:"./build/observe5.cjs.js",
+      file:"./build/observe5.js",
       format: "cjs",
       plugins:[terser()]
     },

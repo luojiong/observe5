@@ -1,9 +1,9 @@
 {
   "name": "observe5",
-  "version": "1.2.7",
+  "version": "1.2.9",
   "description": "typescript emitter",
-  "main": "./build/observe5.cjs.js",
-  "module": "./build/observe5.esm.js",
+  "main": "./build/observe5.js",
+  "module": "./build/observe5.mjs",
   "types": "./build/observe5.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/rollup -c",
@@ -13,14 +13,14 @@
     ".": {
       "types": "./build/observe5.d.ts",
       "browser": {
-        "require": "./build/observe5.cjs.js",
-        "import": "./build/observe5.esm.js",
-        "default":"./build/observe5.esm.js"
+        "require": "./build/observe5.js",
+        "import": "./build/observe5.mjs",
+        "default":"./build/observe5.mjs"
       },
       "default": {
-        "require": "./build/observe5.cjs.js",
-        "import": "./build/observe5.esm.js",
-        "default":"./build/observe5.cjs.js"
+        "require": "./build/observe5.js",
+        "import": "./build/observe5.mjs",
+        "default":"./build/observe5.js"
       }
     },
     "./package.json": "./package.json",
