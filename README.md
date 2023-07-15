@@ -24,7 +24,8 @@ Observe.off('eventName')
 ## Demo
 
 ```typescript
-import Observe5 from 'observe5'
+import Observe5 from 'observe5' //esm
+//const Observe5 = require("observe5") //cjs
 
 // create Observe
 const Observe = new Observe5<{test: string}>();
